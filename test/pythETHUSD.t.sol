@@ -53,4 +53,19 @@ contract PythETHUSDTest is Test {
         vm.expectRevert();
         pythETHUSD.mint{ value: ETH_TO_WEI/100 }();
     }
+
+    function testMintStalePrice() public {
+        setEthPrice(100);
+        skip(120);
+        vm.deal(address(this), ETH_TO_WEI);
+        vm.expectRevert();
+        pythETHUSD.mint{value: ETH_TO_WEI/100}();
+    }
+
+    function testUpdateAndMint() public {
+        bytes[] memory updateData = createEthUpdate(100);
+
+        vm.deal(address(this), ETH_TO_WEI);
+        pythETHUSD.updateAndMint{value: ETH_TO_WEI/100}(updateData);
+    }
 }

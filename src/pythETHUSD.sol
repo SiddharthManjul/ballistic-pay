@@ -32,4 +32,11 @@ contract PythETHUSD {
         }
     }
     error InsufficientFee();
+
+    function updateAndMint(bytes[] calldata pythPriceUpdate) external payable {
+        uint updateFee = pyth.getUpdateFee(pythPriceUpdate);
+        pyth.updatePriceFeeds{value: updateFee}(pythPriceUpdate);
+
+        mint();
+    }
 }
