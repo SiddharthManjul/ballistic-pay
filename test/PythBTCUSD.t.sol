@@ -1,13 +1,10 @@
-// SPDX-License-Identifier: MIT
+// SPDX_License-Identifier: MIT
 pragma solidity ^0.8.13;
 
 import "forge-std/Test.sol";
-
-// Import your EthUsdReader contract here
-import "../src/PythETHUSD.sol";
+import "../src/PythBTCUSD.sol";
 
 contract MockPyth is IPyth {
-
     function getPriceUnsafe(bytes32 id) external pure override returns (
         int64 price,
         uint64 conf,
@@ -19,17 +16,17 @@ contract MockPyth is IPyth {
     }
 }
 
-contract PythETHUSDTest is Test {
-    PythETHUSD public reader;
+contract PythBTCUSDTest is Test {
+    PythBTCUSD public reader;
     MockPyth public mockPyth;
 
     function setUp() public {
         mockPyth = new MockPyth();
-        reader = new PythETHUSD(address(mockPyth));
+        reader = new PythBTCUSD(address(mockPyth));
     }
 
-    function testGetEthUsdPrice() public view {
-        (int64 price, uint64 conf, int32 expo, uint256 publishTime) = reader.getEthUsdPrice();
+    function testGetBtcUsdPrice() public view {
+        (int64 price, uint64 conf, int32 expo, uint256 publishTime) = reader.getBtcUsdPrice();
         assertEq(price, 2000e8);
         assertEq(conf, 10e8);
         assertEq(expo, -8);
