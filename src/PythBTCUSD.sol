@@ -11,7 +11,7 @@ interface IPyth {
 }
 
 contract PythBTCUSD {
-    // Replace with actual Pyth contract address on Base Sepolia
+   
     address public immutable pythContract;
 
     // ETH/USD price feed ID (same on all chains)
