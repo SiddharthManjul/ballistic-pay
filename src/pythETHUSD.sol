@@ -5,7 +5,7 @@ import "@pythnetwork/pyth-sdk-solidity/IPyth.sol";
 import "@pythnetwork/pyth-sdk-solidity/PythStructs.sol";
 
 contract PythETHUSD {
-    IPyth pyth;
+    IPyth public pyth;
 
     constructor() {
         pyth = IPyth(0xA2aa501b19aff244D90cc15a4Cf739D2725B5729);
