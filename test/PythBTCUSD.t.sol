@@ -5,7 +5,7 @@ import "forge-std/Test.sol";
 import "../src/PythBTCUSD.sol";
 
 contract MockPyth is IPyth {
-    function getPriceUnsafe(bytes32 id) external pure override returns (
+    function getPriceUnsafe(bytes32 /* id */) external pure override returns (
         int64 price,
         uint64 conf,
         int32 expo,
