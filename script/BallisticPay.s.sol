@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.7;
 
 import {Script, console} from "forge-std/Script.sol";
 import {BallisticPay} from "../src/BallisticPay.sol";
@@ -7,7 +7,7 @@ import {BallisticPay} from "../src/BallisticPay.sol";
 contract DeployBallisticPay is Script {
     function run() external {
         vm.startBroadcast();
-        BallisticPay ballisticPay = new BallisticPay();
+        BallisticPay ballisticPay = new BallisticPay(0x0c76859E85727683Eeba0C70Bc2e0F5781337818);
         console.log("BallisticPay deployed to:", address(ballisticPay));
         vm.stopBroadcast();
     }
