@@ -33,3 +33,12 @@ UBI systems often rely on unsustainable airdrops and inflationary token models. 
 
 Web3 systems lack verifiable, interoperable identity structures that are critical for secure employee recognition and benefits assignment.
 
+## Solution Overview
+
+BallisticPay tackles these issues through a multi-layered architecture that combines:
+
+- Token preference and swap mechanisms
+- Decentralized identifiers (DIDs) for identity
+- UBI-based deductions and capital deployment
+- Automated liquidity provisioning and staking
+- Year-end capital returns and bonuses
