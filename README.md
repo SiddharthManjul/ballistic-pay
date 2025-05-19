@@ -84,3 +84,27 @@ DID-based architecture ensures both privacy and verifiability. The employee's re
 - Seamless wallet-based authentication.
 
 **Purpose:** Ensures secure, privacy-preserving, and verifiable on-chain identities tied to real-world employee roles, establishing a foundation for decentralized interactions within BallisticPay.
+
+### UBI Deduction & Salary Transfer Module
+
+The UBI Deduction and Salary Transfer Module serves as the financial core of BallisticPay, automating monthly payroll disbursements while embedding a sustainable Universal Basic Income (UBI) model that reinvests capital instead of distributing it passively.
+
+**What is UBI in BallisticPay?** Universal Basic Income (UBI) generally refers to an unconditional, regular income given to all individuals irrespective of employment status [1]. However, BallisticPay reinterprets UBI by introducing a self-funded approach. Rather than distributing external subsidies or printing inflationary tokens, a small fraction of each employee's salary is allocated into capital-productive DeFi strategies. This transforms UBI from a one-way distribution mechanism into a regenerative economic engine.
+
+**Operational Flow:**
+1. Compute employee salary in their selected token (e.g., ETH).
+2. Deduct a predefined portion (e.g., 10%) as the UBI contribution.
+3. Convert this portion into a stablecoin (e.g., USDC) to hedge against volatility.
+4. Allocate the stablecoin into DeFi protocols like Aave, Compound, or Curve.
+5. Transfer the remaining salary to the employee's wallet in the requested stablecoin.
+
+**Monthly Recurrence:**
+This process is automated and recurs each payroll cycle. Over time, the DeFi allocations accumulate returns, forming a passive yield reserve tied to the employee's DID.
+
+**Key Features:**
+- Continuous capital reinvestment for long-term value.
+- Risk-mitigated stablecoin usage.
+- Transparent deductions visible on-chain.
+- Non-inflationary, self-reliant UBI mechanism.
+
+**Purpose:** This module balances present salary delivery with future capital growth. By anchoring deductions into stable, income-generating DeFi instruments, BallisticPay creates a self-sustaining UBI layer that supports employee wealth-building.
