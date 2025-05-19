@@ -139,3 +139,43 @@ Security underpins the capital deployment model:
 - **Withdrawal Safety Nets:** Emergency exits and liquidity buffer pools allow for rapid divestment in black swan scenarios.
 
 **Purpose:** This module transforms UBI from a passive deduction into a dynamic capital engine. By allocating stablecoins to carefully vetted and algorithmically governed DeFi strategies, BallisticPay generates sustainable returns that can be redeemed at scale, ensuring long-term utility and growth for employees.
+
+### Year-End Capital and Bonus Redemption
+
+Traditional financial systems often treat bonuses as discretionary, opaque, and centralized rewards. In contrast, BallisticPay offers a transparent, programmatic, and performance-linked model that uses accumulated yield from UBI investments to deliver year-end bonuses in a decentralized and automated fashion.
+
+**Bonus Computation Model**
+
+At the conclusion of each fiscal cycle (typically annual), BallisticPay initiates a bonus distribution protocol for all registered employees. The bonus mechanism is calculated using a combination of individual contribution records and the total yield accrued by their capital over time.
+
+**Flow Overview:**
+1. **Aggregate Individual Contributions:** The platform queries each employee's DID-linked record to calculate total salary deductions made for UBI over the year.
+   
+2. **Calculate Yield Performance:** Using yield-tracking smart contracts, the system determines the total interest and fees earned from deployed capital.
+
+3. **Determine Bonus Proportions:** Each employee receives a share of the total yield pool proportional to their contribution and participation duration, optionally adjusted by company-specific multipliers or governance incentives.
+
+4. **Stablecoin Redemption:** Yield and principal are converted back into a stablecoin to ensure a predictable payout. Depending on the employer or DAO preference, employees may also opt to receive bonuses in governance tokens or reinvest in yield-bearing instruments.
+
+5. **On-chain Disbursement:** The bonus is directly transferred to the employee's wallet, linked through their DID, ensuring transparent, verifiable delivery.
+
+**Vesting Logic (Optional)**
+
+BallisticPay supports customizable vesting schedules for bonus disbursement to encourage retention:
+- **Cliff-based Vesting:** A portion of the bonus is locked for a minimum time period (e.g., 6 months).
+- **Linear Vesting:** Gradual unlocking of bonus amounts over time.
+- **Performance Multiplier:** Employees contributing above a certain threshold can unlock faster or larger vesting proportions.
+
+These rules are fully auditable on-chain and adjustable via DAO governance.
+
+**Purpose:** This module redefines the concept of bonuses by aligning them with actual yield performance, employee participation, and transparent distribution logic. It not only creates a strong incentive model for retention but also fosters financial literacy and participation in decentralized finance.
+
+## Conclusion
+
+BallisticPay represents a paradigm shift in how organizations handle payroll, employee identification, and wealth creation in the blockchain era. By integrating decentralized identity with automated UBI deductions, capital deployment, and yield-based bonuses, we create a holistic ecosystem that serves both immediate salary needs and long-term financial growth.
+
+The architecture addresses the fundamental limitations of traditional payroll systems while embracing the flexibility and transparency of blockchain technology. Each module—from token selection to year-end bonus redemption—works in concert to deliver a comprehensive solution that scales across organizations and jurisdictions.
+
+As decentralized finance and Web3 ecosystems continue to mature, infrastructure like BallisticPay will become increasingly essential for organizations seeking to operate in a truly global, crypto-native manner. The self-sustaining UBI model, in particular, offers a blueprint for how employment benefits can evolve beyond simple compensation into true wealth-building mechanisms.
+
+Future research will focus on expanding the protocol's cross-chain capabilities, enhancing the yield optimization algorithms, and developing governance structures that align incentives across all stakeholders in the payroll ecosystem.
