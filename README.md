@@ -64,3 +64,23 @@ This module serves two strategic purposes: it decentralizes the decision-making 
 - Enhanced autonomy in salary preferences.
 
 **Purpose:** Enables customizable, token-native salary choices for a globally diverse, decentralized workforce, improving accessibility and autonomy.
+
+### Employee Registration and DID Module
+
+To establish a secure and verifiable identity layer, BallisticPay incorporates a decentralized onboarding mechanism through Decentralized Identifiers (DIDs). When an employee is registered into the system, their personal information—including name, designation, wallet address, and salary—is captured and used to generate a DID using industry-standard protocols such as Ceramic or ION.
+
+This DID acts as a unique on-chain representation of the employee's identity, cryptographically linked to their wallet address. It enables seamless interaction with other modules within BallisticPay, including salary disbursement, UBI contributions, and bonus retrieval. The employee's DID and associated metadata are stored in a secure, append-only structure referred to as the Employee List.
+
+DID-based architecture ensures both privacy and verifiability. The employee's real-world credentials remain protected while still enabling decentralized authentication. Wallet-based login and verification further simplify the interaction without relying on centralized credentials.
+
+**Flow:**
+1. Capture personal employee details.
+2. Generate a DID linked to the employee's wallet.
+3. Store the DID and employee metadata in the Employee List.
+
+**Key Features:**
+- DID generation for decentralized identity.
+- On-chain, verifiable employee registry.
+- Seamless wallet-based authentication.
+
+**Purpose:** Ensures secure, privacy-preserving, and verifiable on-chain identities tied to real-world employee roles, establishing a foundation for decentralized interactions within BallisticPay.
