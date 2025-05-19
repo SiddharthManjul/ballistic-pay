@@ -108,3 +108,34 @@ This process is automated and recurs each payroll cycle. Over time, the DeFi all
 - Non-inflationary, self-reliant UBI mechanism.
 
 **Purpose:** This module balances present salary delivery with future capital growth. By anchoring deductions into stable, income-generating DeFi instruments, BallisticPay creates a self-sustaining UBI layer that supports employee wealth-building.
+
+### Capital Deployment and Yield Strategies
+
+BallisticPay introduces an innovative approach to Universal Basic Income (UBI) by transforming employee contributions into productive capital. Rather than allowing deducted amounts to remain idle or be immediately disbursed, the system programmatically channels these stablecoin reserves into decentralized finance (DeFi) ecosystems to generate yield.
+
+**Capital Allocation Mechanism**
+
+Once employee UBI contributions are deducted and converted into a risk-mitigated stablecoin (e.g., USDC, DAI), these funds are routed to selected DeFi protocols through smart contracts. The platform supports three primary yield-generation strategies:
+
+- **Lending Platforms (e.g., Aave, Compound):** Funds are lent out at fixed or variable APYs, generating interest over time. These platforms are ideal for conservative capital deployment with a relatively low risk profile.
+  
+- **Automated Market Makers (AMMs) (e.g., Curve, Uniswap v3):** Liquidity provisioning to high-volume pools enables the platform to capture trading fees, albeit with an elevated risk of impermanent loss. BallisticPay limits exposure by selecting stable-stable pools with high depth and low volatility.
+  
+- **Yield Aggregators (e.g., Yearn, Beefy):** These smart contract-based vaults actively reallocate capital across multiple strategies to maximize returns. Aggregators provide built-in optimization logic, automating rebalancing and risk management to ensure yield maximization with minimal manual intervention.
+
+**Intelligent Deployment Governance**
+
+To ensure strategic capital allocation and mitigate systemic risks, BallisticPay incorporates both AI-driven logic and community-based governance:
+
+- **AI Agent Optimization:** An embedded agent monitors DeFi protocol health metrics—such as total value locked (TVL), audit status, APY fluctuations, protocol insurance availability, and historical volatility—to dynamically rebalance capital.
+
+- **DAO Supervision:** All allocation strategies can be proposed, challenged, or modified through a decentralized autonomous organization (DAO). Governance token holders vote on rebalancing thresholds, protocol whitelists, and maximum exposure levels.
+
+**Security and Risk Management Considerations**
+
+Security underpins the capital deployment model:
+- **Protocol Due Diligence:** Only protocols with a rigorous audit trail, high TVL, and community trust are permitted.
+- **Real-Time Monitoring:** Smart contracts integrate with risk oracles to monitor pool health and adjust exposure as needed.
+- **Withdrawal Safety Nets:** Emergency exits and liquidity buffer pools allow for rapid divestment in black swan scenarios.
+
+**Purpose:** This module transforms UBI from a passive deduction into a dynamic capital engine. By allocating stablecoins to carefully vetted and algorithmically governed DeFi strategies, BallisticPay generates sustainable returns that can be redeemed at scale, ensuring long-term utility and growth for employees.
