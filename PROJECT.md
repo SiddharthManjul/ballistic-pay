@@ -14,9 +14,9 @@
 ### User Flow:
 <ul>
   <li>Login: Zero Knowledge based Wallet built on the principle of Embedded Wallets. User will login using this wallet, addresses, private keys, phrases and the portfolio will be managed internally.</li>
-  <li>Dashboard: Dashboard is partitioned between 2 different entities, Payer & Payee.</li>
+  <li>Dashboard: Dashboard is partitioned between 2 different entities, Payer & Payee. Since Ballistic Pay is more focused on B2B, so we will target Web3 Startups & established companies initially and we'll provide salary payouts as a Service.</li>
   <ul>
-    <li>Payer</li>
-    <li>Payee</li>
+    <li>Payer Dashboard: Payer will have the price graph available for all the tokens listed on the platform against USDT. Depending upon the tokens available in his/her account, he/she will select a token to pay the amount to all the payees. Once the token is selected, the system will show the list of all the payees with their details and amount they will receive. If a new payee comes, payer will have the option to add the details of this payee and the credentials will be verified through Zero Knowledge Proofs. Once the list is ready, the payer will be able to initiate the transaction through a batch transaction. This is a batch transaction so all the payee will receive amount in one transaction which is highly efficient in terms of gas. Once the transaction is successful, the receipt will be generated & sent to the payee. The receipts will be available on-chain with some data in encrypted format & all the receipts will be indexed on our platform.</li>
+    <li>Payee: Payee will also have the price graph available for all the tokens listed on the platform against USDT. Their dashboard will have a section which will show the amount they have in the wallet. A section will show all the received transactions & one for send transaction will be there also. All the payment receipts will also be indexed through the dashboard.</li>
   </ul>
 </ul>
