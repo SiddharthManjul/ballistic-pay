@@ -16,3 +16,5 @@ broadcast
 
 node_modules/
 package-lock.json
+
+ospr.json

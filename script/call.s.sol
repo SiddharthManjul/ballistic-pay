@@ -7,7 +7,7 @@ import "../src/BallisticPay.sol";
 contract PrintLatestPrice is Script {
     function run() external view {
         // Pass your deployed BallisticPay contract address directly here:
-        BallisticPay ballisticPay = BallisticPay(0x257c9830C0133bE5D5e2B1d610865F7727a6E929);
+        BallisticPay ballisticPay = BallisticPay(0x2b53ADadbCfC317599a00f762EdD42Ac705AB22C);
 
         (uint80 roundID, int price) = ballisticPay.getLatestPrice();
 
