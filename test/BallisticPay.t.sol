@@ -14,11 +14,11 @@ contract BallisticPayTest is Test {
 
     function setUp() public {
         priceFeed = new MockV3Aggregator(_decimals, _initialAnswer);
-        ballisticPay = new BallisticPay(address(priceFeed));
+        ballisticPay = new BallisticPay();
     }
 
     function testgetLatestPrice() public {
-        (uint80 roundID, int256 price) = ballisticPay.getLatestPrice();
+        (uint80 roundID, int256 price) = ballisticPay.getLatestEthUsdPrice();
 
         assertEq(price, _initialAnswer);
         assertEq(roundID, 1);

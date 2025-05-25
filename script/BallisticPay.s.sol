@@ -7,7 +7,7 @@ import {BallisticPay} from "../src/BallisticPay.sol";
 contract DeployBallisticPay is Script {
     function run() external {
         vm.startBroadcast();
-        BallisticPay ballisticPay = new BallisticPay(0x0c76859E85727683Eeba0C70Bc2e0F5781337818);
+        BallisticPay ballisticPay = new BallisticPay();
         console.log("BallisticPay deployed to:", address(ballisticPay));
         vm.stopBroadcast();
     }
