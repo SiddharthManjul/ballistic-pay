@@ -7,12 +7,15 @@ import "../src/BallisticPay.sol";
 contract PrintLatestPrice is Script {
     function run() external view {
         // Pass your deployed BallisticPay contract address directly here:
-        BallisticPay ballisticPay = BallisticPay(0x2b53ADadbCfC317599a00f762EdD42Ac705AB22C);
+        BallisticPay ballisticPay = BallisticPay(0xB06782f2dFdBcf3b324034BB6C5743bb3A6e92B6);
 
-        (uint80 roundID, int price) = ballisticPay.getLatestPrice();
+        (uint80 btcUsdRoundID, int btcUsdPrice) = ballisticPay.getLatestBtcUsdPrice();
+        (uint80 ethUsdRoundID, int ethUsdPrice) = ballisticPay.getLatestEthUsdPrice();
 
-        console.log("Round ID:", roundID);
-        console.log("Price:", price);
+        console.log("BTC/USD Round ID:", btcUsdRoundID);
+        console.log("BTC/USD Price:", btcUsdPrice);
+        console.log("ETH/USD Round ID:", ethUsdRoundID);
+        console.log("ETH/USD Price:", ethUsdPrice);
     }
 }
 
