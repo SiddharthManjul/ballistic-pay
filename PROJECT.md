@@ -36,3 +36,12 @@
   </ul>
   <li>Flow: Depending upon the tokens available in payer's account, he/she will select a token to pay the amount to all the payees. Once the token is selected, the system will show the list of all the payees with their details and amount they will receive. If a new payee comes, payer will have the option to add the details of this payee and the credentials will be verified through Zero Knowledge Proofs. Once the list is ready, the payer will be able to initiate the transaction through a batch transaction. This is a batch transaction so all the payee will receive amount in one transaction which is highly efficient in terms of gas. Once the transaction is successful, the receipt will be generated & sent to the payee. The receipts will be available on-chain with some data in encrypted format & all the receipts will be indexed on our platform.</li>
 </ul>
+
+### ZK Integration:
+<p>Allow employers to prove salary payments occurred to specific employees without revealing the amount, using zero-knowledge proofs.</p>
+<ul>
+  <li>ZK Circuit – Generate a proof that a payment happened with hidden amount.</li>
+  <li>Commitment Scheme – Hide the actual salary value (amount).</li>
+  <li>Merkle Tree or Nullifier – Prevent double claims and prove inclusion.</li>
+  <li>On-chain Verifier – Smart contract to verify ZK proof without knowing the amount.</li>
+</ul>

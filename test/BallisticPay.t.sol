@@ -17,7 +17,7 @@ contract BallisticPayTest is Test {
         ballisticPay = new BallisticPay();
     }
 
-    function testgetLatestPrice() public {
+    function testgetLatestPrice() public view {
         (uint80 roundID, int256 price) = ballisticPay.getLatestEthUsdPrice();
 
         assertEq(price, _initialAnswer);
