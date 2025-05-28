@@ -15,7 +15,7 @@ interface IVerifierProxy {
         bytes calldata parameterPayload
     ) external payable returns (bytes memory verfierResponse);
 
-    function s_feedManager() external view returns (IVerifierFeeManager);
+    function s_feeManager() external view returns (IVerifierFeeManager);
 }
 
 interface IFeeManager {
@@ -121,7 +121,7 @@ contract StreamsUpkeep is ILogAutomation, StreamsLookupCompatibleInterface {
 
         IFeeManager feeManager = IFeeManager(address(verifier.s_feeManager()));
         IRewardManager rewardManager = IRewardManager(
-            address(feedManager.i_rewardManager())
+            address(feeManager.i_rewardManager())
         );
 
         address feeTokenAddress = feeManager.i_linkAddress();
@@ -148,7 +148,7 @@ contract StreamsUpkeep is ILogAutomation, StreamsLookupCompatibleInterface {
                 verifiedReportData,
                 (ReportV4)
             );
-            lastDecodeedPrice = verifiedReport.price;
+            lastDecodedPrice = verifiedReport.price;
         }
     }
 }
