@@ -32,4 +32,44 @@ interface IFeeManager {
 
 contract StreamsUpkeep is ILogAutomation, StreamsLookupCompatibleInterface {
     error InvalidReportVersion(uint16 version);
+
+    struct ReportV3 {
+        bytes32 feedId;
+        uint32 validFromTimestamp;
+        uint32 observationsTimestamp;
+        uint192 nativeTime;
+        uint192 linkFee;
+        uint32 expiresAt;
+        int192 price;
+        int192 bid;
+        int192 ask;
+    }
+
+    struct ReportV4 {
+        bytes32 feedId;
+        uint32 validFromTimestamp;
+        uint32 observationsTimestamp;
+        uint192 nativeTime;
+        uint192 linkFee;
+        uint32 expiresAt;
+        int192 price;
+        uint32 marketStatus;
+    }
+
+    struct Quote {
+        address quoteAddress;
+    }
+
+    IVerifierProxy public verifier;
+
+    address public FEE_ADDRESS;
+    string public constant DATASTREAMS_FEEDLABEL = "feedIDs";
+    string public constant DATASTREAMS_QUERYLABEL = "timestamp";
+    int192 public lastDecodedPrice;
+
+    string[] public feedIds = [
+       "0x000359843a543ee2fe414dc14c7e7920ef10f4372990b79d6361cdc0dd1ba782" 
+    ];
+
+    
 }
