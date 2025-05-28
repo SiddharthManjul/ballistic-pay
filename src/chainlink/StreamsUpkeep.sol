@@ -112,6 +112,37 @@ contract StreamsUpkeep is ILogAutomation, StreamsLookupCompatibleInterface {
 
         (, bytes memory reportData) = abi.decode(unverifiedReport, (bytes32[3], bytes));
 
+        uint16 reportVersion = (uint16(uint8(reportData[0])) << 8) |
+            uint16(uint8(reportData[1]));
 
+        if (reportVersion != 3 && reportVersion != 4) {
+            revert InvalidReportVersion(uint8(reportVersion));
+        }
+
+        IFeeManager feeManager = IFeeManager(address(verifier.s_feeManager()));
+        IRewardManager rewardManager = IRewardManager(
+            address(feedManager.i_rewardManager())
+        );
+
+        address feeTokenAddress = feeManager.i_linkAddress();
+        (Common.Asset memory fee, , ) = feeManager.getFeeAndReward(
+            address(this),
+            reportData,
+            feeTokenAddress
+        );
+
+        IERC20(feeTokenAddress).approve(address(rewardManager), fee.amount);
+
+        bytes memory verifiedReportData = verifier.verify(
+            unverifiedReport,
+            abi.encode(feeTokenAddress)
+        );
+
+        if (reportVersion == 3) {
+            ReportV3 memory verifiedReport = abi.decode(
+                verifiedReportData,
+                (ReportV3)
+            );
+        }
     }
 }
