@@ -143,6 +143,12 @@ contract StreamsUpkeep is ILogAutomation, StreamsLookupCompatibleInterface {
                 verifiedReportData,
                 (ReportV3)
             );
+        } else if (reportVersion == 4) {
+            ReportV4 memory verifiedReport = abi.decode(
+                verifiedReportData,
+                (ReportV4)
+            );
+            lastDecodeedPrice = verifiedReport.price;
         }
     }
 }
