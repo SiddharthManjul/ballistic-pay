@@ -71,5 +71,47 @@ contract StreamsUpkeep is ILogAutomation, StreamsLookupCompatibleInterface {
        "0x000359843a543ee2fe414dc14c7e7920ef10f4372990b79d6361cdc0dd1ba782" 
     ];
 
-    
+    constructor(address _verifier) {
+        verifier = IVerifierProxy(_verifier);
+    }
+
+    function checkLog(
+        Log calldata log,
+        bytes memory
+    ) external returns (bool upkeepNeeded, bytes memory performData) {
+        revert StreamsLookup(
+            DATASTREAMS_FEEDLABEL,
+            feedIds,
+            DATASTREAMS_QUERYLABEL,
+            log.timestamp,
+            ""
+        );
+    }
+
+    function checkErrorHandler(
+        uint256,
+        bytes memory
+    ) external pure returns (bool upkeepNeeded, bytes memory performData) {
+        return (true, "0");
+    }
+
+    function checkCallback(
+        bytes[] calldata values,
+        bytes calldata extraData
+    ) external pure returns (bool, bytes memory) {
+        return (true, abi.encode(values, extraData));
+    }
+
+    function performUpkeep(bytes calldata performData) external {
+        (bytes[] memory signedReports, bytes memory extraData) = abi.decode(
+            performData,
+            (bytes[], bytes)
+        );
+
+        bytes memory unverifiedReport = signedReports[0];
+
+        (, bytes memory reportData) = abi.decode(unverifiedReport, (bytes32[3], bytes));
+
+
+    }
 }
