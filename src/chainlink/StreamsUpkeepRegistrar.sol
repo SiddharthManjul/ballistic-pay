@@ -45,5 +45,60 @@ interface IFeeManager {
     function i_linkAddress() external view returns (address);
     function i_nativeAddress() external view returns (address);
     function i_rewardManager() external view returns (address);
+}
 
+contract StreamsUpkeepRegistrar is ILogAutomation, StreamsLookupCompatibleInterface {
+    error InvalidReportVersion(uint16 version);
+
+    struct ReportV3 {
+        bytes32 feedId;
+        uint32 validFromTimestamp;
+        uint32 observationTimestamp;
+        uint192 nativeFee;
+        uint192 linkFee;
+        uint32 expiresAt;
+        int192 price;
+        int192 bid;
+        int192 ask;
+    }
+
+    struct ReportV4 {
+        bytes32 feedId;
+        uint32 validFromTimestamp;
+        uint32 observationTimestamp;
+        uint192 nativeFee;
+        uint192 linkFee;
+        uint32 expiresAt;
+        uint192 price;
+        uint32 marketStatus;
+    }
+
+    struct Quote {
+        address quoteAddress;
+    }
+
+    event PriceUpdate(int192 indexed price);
+
+    IVeriferProxy public verifier;
+
+    address public FEE_ADDRESS;
+    string public constant DATASTREAMS_FEEDLABEL = "feedIDs";
+    string public constant DATASTREAMS_QUERYLABEL = "timestamp";
+    int192 public lastDecodedPrice;
+    uint256 s_upkeepID;
+    bytes public s_LogTriggerConfig;
+
+    string[] public feedIds;
+
+    constructor(
+        address _verifier,
+        LinkTokenInterface link,
+        AutomationRegistrarInterface registrar,
+        string[] memory _feedIds,
+    ) {
+        verifier = IVerifierProxy(_verifier);
+        i_link = link;
+        i_registrar = registrar;
+        feedIds = _feedIds;
+    }
 }
