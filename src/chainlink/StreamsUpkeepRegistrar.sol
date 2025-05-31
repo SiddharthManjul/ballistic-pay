@@ -94,11 +94,88 @@ contract StreamsUpkeepRegistrar is ILogAutomation, StreamsLookupCompatibleInterf
         address _verifier,
         LinkTokenInterface link,
         AutomationRegistrarInterface registrar,
-        string[] memory _feedIds,
+        string[] memory _feedIds
     ) {
         verifier = IVerifierProxy(_verifier);
         i_link = link;
         i_registrar = registrar;
         feedIds = _feedIds;
+    }
+
+    function registerAndPredictID(RegistrationParams memory params) public {
+        i_link.approve(address(i_registrar), params.amount);
+        uint256 upkeepID = i_registrar.registerUpkeep(params);
+        if (upkeepID != 0) {
+            s_upkeepID = upkeepID; // DEV - Use the upkeepID however you see fit
+        } else {
+            revert("auto-approve disabled");
+        }
+    }
+
+    function checkErrorHandler(uint256, /*errCode*/ bytes memory /*extraData*/ )
+        external
+        pure
+        returns (bool upkeepNeeded, bytes memory performData)
+    {
+        return (true, "0");
+    }
+
+    function checkLog(Log calldata log, bytes memory) external returns (bool upkeepNeeded, bytes memory performData) {
+        revert StreamsLookup(DATASTREAMS_FEEDLABEL, feedIds, DATASTREAMS_QUERYLABEL, log.timestamp, "");
+    }
+
+    function checkCallback(bytes[] calldata values, bytes calldata extraData)
+        external
+        pure
+        returns (bool, bytes memory)
+    {
+        return (true, abi.encode(values, extraData));
+    }
+
+    function performUpkeep(bytes calldata performData) external {
+        // Decode the performData bytes passed in by CL Automation.
+        // This contains the data returned by your implementation in checkCallback().
+        (bytes[] memory signedReports, bytes memory extraData) = abi.decode(performData, (bytes[], bytes));
+
+        bytes memory unverifiedReport = signedReports[0];
+
+        (, /* bytes32[3] reportContextData */ bytes memory reportData) =
+            abi.decode(unverifiedReport, (bytes32[3], bytes));
+
+        // Extract report version from reportData
+        uint16 reportVersion = (uint16(uint8(reportData[0])) << 8) | uint16(uint8(reportData[1]));
+
+        // Validate report version
+        if (reportVersion != 3 && reportVersion != 4) {
+            revert InvalidReportVersion(uint8(reportVersion));
+        }
+
+        // Report verification fees
+        IFeeManager feeManager = IFeeManager(address(verifier.s_feeManager()));
+        IRewardManager rewardManager = IRewardManager(address(feeManager.i_rewardManager()));
+
+        address feeTokenAddress = feeManager.i_linkAddress();
+        (Common.Asset memory fee,,) = feeManager.getFeeAndReward(address(this), reportData, feeTokenAddress);
+
+        // Approve rewardManager to spend this contract's balance in fees
+        IERC20(feeTokenAddress).approve(address(rewardManager), fee.amount);
+
+        // Verify the report
+        bytes memory verifiedReportData = verifier.verify(unverifiedReport, abi.encode(feeTokenAddress));
+
+        // Decode verified report data into the appropriate Report struct based on reportVersion
+        if (reportVersion == 3) {
+            // v3 report schema
+            ReportV3 memory verifiedReport = abi.decode(verifiedReportData, (ReportV3));
+
+            // Store the price from the report
+            lastDecodedPrice = verifiedReport.price;
+        } else if (reportVersion == 4) {
+            // v4 report schema
+            ReportV4 memory verifiedReport = abi.decode(verifiedReportData, (ReportV4));
+
+            // Store the price from the report
+            lastDecodedPrice = verifiedReport.price;
+        }
     }
 }
